@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ecps</groupId>
-            <artifactId>ecps-manager-pojo</artifactId>
+            <artifactId>ecps-manager-model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--
+    plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
+    properties?, settings?,
+    typeAliases?, typeHandlers?,
+    objectFactory?,objectWrapperFactory?,
+    plugins?,
+    environments?, databaseIdProvider?, mappers?
+-->
+<configuration>
+    <!-- <settings>
+         &lt;!&ndash;使用jdbc的generatedKeys获取数据库自增主键值 默认false&ndash;&gt;
+         <setting name="useGeneratedKeys" value="true"/>
+         &lt;!&ndash;使用列别名替换列名 默认true&ndash;&gt;
+         <setting name="useColumnLabel" value="true"/>
+         &lt;!&ndash;开启驼峰命名转换&ndash;&gt;
+         <setting name="mapUnderscoreToCamelCase" value="true"/>
+     </settings>-->
+
+    <plugins>
+        <!--配置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--指定数据库-->
+            <property name="helperDialect" value="mysql"/>
+            <!-- 该参数默认为false -->
+            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+            <property name="rowBoundsWithCount" value="true" />
+            <!--分页合理化参数 该参数默认为false，直接根据参数进行查询-->
+            <!--设置为true时，如果pageNum<=0 时会查询第一页-->
+            <!--pageNum>pages（超过总数）会查询最后一页-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+
+        <!-- 通用mapper -->
+       <!-- <plugin interceptor="com.github.abel533.mapperhelper.">
+            &lt;!&ndash;主键自增回写方法,默认值MYSQL,详细说明请看文档 &ndash;&gt;
+            <property name="IDENTITY" value="MYSQL" />
+            &lt;!&ndash;通用Mapper接口，多个通用接口用逗号隔开 &ndash;&gt;
+            <property name="mappers" value="com.github.abel533.mapper.Mapper" />
+        </plugin>-->
+    </plugins>
+
+</configuration>
