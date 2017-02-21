@@ -1,0 +1,487 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ecps</groupId>
+  <artifactId>ecps-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>ecps-parent</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!--统一管理版本依赖-->
+    <!--单元测试-->
+    <junit.version>4.12</junit.version>
+    <spring-test.version>4.2.3.RELEASE</spring-test.version>
+
+    <!--日志版本-->
+    <slf4j.version>1.7.12</slf4j.version>
+    <logback-core.version>1.1.7</logback-core.version>
+    <logback-classic.version>1.1.7</logback-classic.version>
+
+    <!--数据库相关版本-->
+    <mysql.version>5.1.32</mysql.version>
+    <druid.version>1.0.18</druid.version>
+
+    <!--mybatis 版本依赖-->
+    <mybatis.version>3.2.8</mybatis.version>
+    <mybatis.spring.version>1.2.2</mybatis.spring.version>
+    <persistence-api.version>1.0</persistence-api.version>
+    <mybatis.mapper.version>3.3.9</mybatis.mapper.version>
+    <abel533.mapper.version>3.0.1</abel533.mapper.version>
+
+    <!--mybatis 分页插件版本依赖-->
+    <pagehelper.version>5.0.0</pagehelper.version>
+    <jsqlparser.version>0.9.5</jsqlparser.version>
+
+    <!--spring 版本依赖-->
+    <spring.version>4.2.5.RELEASE</spring.version>
+
+    <!--jsp servlet 标签版本依赖-->
+    <jstl.version>1.1.2</jstl.version>
+    <servlet-api.version>2.5</servlet-api.version>
+    <jsp-api.version>2.0</jsp-api.version>
+
+    <!--jackson 版本依赖-->
+    <jackson.version>2.4.2</jackson.version>
+    <gson.version>2.3.1</gson.version>
+
+    <!--protostuff 序列化依赖-->
+    <protostuff.version>1.0.9</protostuff.version>
+
+    <!--httpclient 版本依赖-->
+    <httpclient.version>4.3.5</httpclient.version>
+
+    <!--Aapche commons 组件版本依赖-->
+    <commons-lang3.version>3.3.2</commons-lang3.version>
+    <commons-io.version>1.3.2</commons-io.version>
+    <commons-net.version>3.3</commons-net.version>
+    <commons-fileupload.version>1.3.1</commons-fileupload.version>
+    <commons-collections.version>3.2.1</commons-collections.version>
+
+    <!--redis 版本依赖-->
+    <jedis.version>2.7.2</jedis.version>
+
+    <!--solr 全文检索版本依赖-->
+    <solrj.version>6.4.0</solrj.version>
+
+    <!--freemarker 静态化页面版本依赖-->
+    <freemarker.version>2.3.23</freemarker.version>
+
+    <!--quarz 定时任务版本依赖-->
+    <quartz.version>2.2.2</quartz.version>
+
+    <!--fastdfs 分布式文件管理版本依赖-->
+    <fastdfs-client.version>1.25.1-RELEASE</fastdfs-client.version>
+
+    <!--activiti 工作流版本依赖-->
+    <activiti.version>5.18.0</activiti.version>
+
+    <!--joda-time 时间组件版本依赖-->
+    <joda-time.version>2.5</joda-time.version>
+
+    <!--hibernate-validator 校验组件依赖-->
+    <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+
+    <!--rabbit 消息中间件-->
+    <spring-rabbit.version>1.6.3.RELEASE</spring-rabbit.version>
+
+    <!--swagger api文档管理-->
+    <swagger.version>2.6.0</swagger.version>
+    <swagger-springmvc.version>1.0.2</swagger-springmvc.version>
+    <swagger-annotations.version>1.3.11</swagger-annotations.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!--测试mybatis-generator-->
+      <dependency>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-core</artifactId>
+        <version>1.3.2-fix</version>
+      </dependency>
+
+      <!--junit4 单元测试-->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!--spring-test 整合junit4 测试-->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${spring-test.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- 日志依赖： java日志： slf4j, log4j, logback, common-logging
+                            slf4j : 是规范/接口
+                            日志实现：log4j ,logback, common-logging
+                            使用： slf4j + logback
+                        -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>${logback-core.version}</version>
+      </dependency>
+
+      <!--实现slf4j 接口并整合-->
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback-classic.version}</version>
+      </dependency>
+
+      <!--数据库相关依赖-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+
+      <!--druid-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+      <!--DAO 框架依赖 mybatis 依赖-->
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>${mybatis.version}</version>
+      </dependency>
+
+      <!--mybatis 整合spring-->
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>${mybatis.spring.version}</version>
+      </dependency>
+
+      <!--通用mapper-->
+      <dependency>
+        <groupId>tk.mybatis</groupId>
+        <artifactId>mapper</artifactId>
+        <version>${mybatis.mapper.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.persistence</groupId>
+        <artifactId>persistence-api</artifactId>
+        <version>${persistence-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.abel533</groupId>
+        <artifactId>mapper</artifactId>
+        <version>${abel533.mapper.version}</version>
+      </dependency>
+
+      <!--mybatis 分页插件-->
+      <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper</artifactId>
+        <version>${pagehelper.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.jsqlparser</groupId>
+        <artifactId>jsqlparser</artifactId>
+        <version>${jsqlparser.version}</version>
+      </dependency>
+
+      <!--spring 依赖-->
+      <!--但这里面是可以省略很多不用写的，因为有些包已经把spring做为默认依赖，
+      这里面可以省略的依赖有：spring-core;spring-beans（上面这两个spring-context会自动依赖）;
+      spring-context，spring-jdbc（mybatis-spring会依赖）；
+      spring-web（spring-webmvc会依赖）；
+      logback-core（logback-classic会依赖）.-->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+
+      <!--servlet web 依赖-->
+      <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>${jstl.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>${jstl.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>${jsp-api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- Apache工具组件 -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>${commons-net.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>${commons-collections.version}</version>
+      </dependency>
+
+      <!--jackson 依赖-->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>${gson.version}</version>
+      </dependency>
+
+      <!--protostuff 序列化依赖-->
+      <dependency>
+        <groupId>com.dyuproject.protostuff</groupId>
+        <artifactId>protostuff-core</artifactId>
+        <version>${protostuff.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.dyuproject.protostuff</groupId>
+        <artifactId>protostuff-runtime</artifactId>
+        <version>${protostuff.version}</version>
+      </dependency>
+
+      <!--httpclient 依赖-->
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.version}</version>
+      </dependency>
+
+      <!--quartz 依赖-->
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${quartz.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz-jobs</artifactId>
+        <version>${quartz.version}</version>
+      </dependency>
+
+      <!--activiti 依赖-->
+      <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-spring</artifactId>
+        <version>${activiti.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-engine</artifactId>
+        <version>${activiti.version}</version>
+      </dependency>
+
+      <!--fastDFS client-->
+      <!-- <dependency>
+           <groupId>com.github.tobato</groupId>
+           <artifactId>fastdfs-client</artifactId>
+           <version>${fastdfs-client.version}</version>
+       </dependency>-->
+      <dependency>
+        <groupId>com.github.tobato</groupId>
+        <artifactId>fastdfs-client</artifactId>
+        <version>${fastdfs-client.version}</version>
+      </dependency>
+
+      <!-- 文件上传组件 -->
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>${commons-fileupload.version}</version>
+      </dependency>
+
+      <!-- Redis客户端 -->
+      <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>${jedis.version}</version>
+      </dependency>
+
+      <!-- solr客户端 -->
+      <dependency>
+        <groupId>org.apache.solr</groupId>
+        <artifactId>solr-solrj</artifactId>
+        <version>${solrj.version}</version>
+      </dependency>
+
+      <!--freemarker 组件-->
+      <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>${freemarker.version}</version>
+      </dependency>
+
+      <!--joda-time  时间组件-->
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>${joda-time.version}</version>
+      </dependency>
+
+      <!--hiberbate-validator 校验组件-->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${hibernate-validator.version}</version>
+      </dependency>
+
+      <!--rabbit 消息中间件-->
+      <dependency>
+        <groupId>org.springframework.amqp</groupId>
+        <artifactId>spring-rabbit</artifactId>
+        <version>${spring-rabbit.version}</version>
+      </dependency>
+
+      <!--swagger API文档在线管理工具-->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+
+      <!--不使用swagger-ui.jar集成时使用的依赖-->
+      <dependency>
+        <groupId>com.mangofactory</groupId>
+        <artifactId>swagger-springmvc</artifactId>
+        <version>${swagger-springmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mangofactory</groupId>
+        <artifactId>swagger-models</artifactId>
+        <version>${swagger-springmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wordnik</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger-annotations.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <!-- 资源文件拷贝插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- java编译插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <!-- 配置tomcat插件 -->
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
