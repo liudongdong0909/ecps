@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @ApiModel(value="",description="数据库表：tb_order_shipping")
 @Table(name = "tb_order_shipping")
-public class TbOrderShipping extends BaseModel{
+public class TbOrderShipping extends BaseModel {
 
     @ApiModelProperty(value="订单ID",name="orderId", required=true)
     @NotEmpty

@@ -12,7 +12,7 @@ import java.util.Date;
 
 @ApiModel(value="订单表",description="数据库表：tb_order")
 @Table(name = "tb_order")
-public class TbOrder extends BaseModel{
+public class TbOrder extends BaseModel {
 
     @ApiModelProperty(value="订单id",name="orderId", required=true)
     @NotEmpty

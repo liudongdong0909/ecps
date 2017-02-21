@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @ApiModel(value="商品描述表",description="数据库表：tb_item_desc")
 @Table(name = "tb_item_desc")
-public class TbItemDesc extends BaseModel{
+public class TbItemDesc extends BaseModel {
 
     @ApiModelProperty(value="商品ID",name="itemId", required=true)
     @NotEmpty
