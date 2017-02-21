@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+    <!--配置包扫描器-->
+    <context:component-scan base-package="com.ecps.ssm.controller"/>
+
+    <!--配置注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!-- swagger-ui 注入 直接集成swagger-uijar的方式使用此配置-->
+    <!-- <bean class="com.ecps.apidoc.SwaggerConfig"/>-->
+    <!-- swagger-ui 注入 不直接集成swagger-uijar的方式使用此配置-->
+    <bean class="com.ecps.apidoc.SwaggerApiConfig"/>
+
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 对静态资源文件的访问 -->
+    <mvc:default-servlet-handler />
+
+    <!--静态资源映射-->
+    <mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/"/>
+    <!--<mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>-->
+
+    <!--配置多媒体解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设定编码-->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--最大上传5M 5*1024*1024-->
+        <property name="maxUploadSize" value="5242880"/>
+        <!--推迟文件解析， 以便在上传中捕获文件大小异常-->
+        <!--<property name="resolveLazily" value="true"/>-->
+        <!--配置虚拟路径-->
+        <!--<property name="uploadTempDir" value="/upload/tempt"/>-->
+    </bean>
+
+</beans>
