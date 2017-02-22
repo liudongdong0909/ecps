@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -49,7 +49,8 @@
     <gson.version>2.3.1</gson.version>
 
     <!--protostuff 序列化依赖-->
-    <protostuff.version>1.0.9</protostuff.version>
+    <protostuff.version>1.0.10</protostuff.version>
+    <objenesis.version>2.5.1</objenesis.version>
 
     <!--httpclient 版本依赖-->
     <httpclient.version>4.3.5</httpclient.version>
@@ -320,6 +321,12 @@
         <groupId>com.dyuproject.protostuff</groupId>
         <artifactId>protostuff-runtime</artifactId>
         <version>${protostuff.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.objenesis</groupId>
+        <artifactId>objenesis</artifactId>
+        <version>${objenesis.version}</version>
       </dependency>
 
       <!--httpclient 依赖-->
