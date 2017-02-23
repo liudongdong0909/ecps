@@ -1,5 +1,6 @@
 package com.ecps.common.bean;
 
+import com.ecps.common.enums.ECPSStatus;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -16,6 +17,7 @@ import java.util.List;
  * @create 2017-02-20 下午 02:14
  */
 public class ECPSResult {
+
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -39,67 +41,52 @@ public class ECPSResult {
     }
 
     /**
-     * 返回状态为200的结果
+     * 响应结果 成功不返回数据
+     * @return
+     */
+    public static ECPSResult success(){
+        return new ECPSResult(ECPSStatus.SUCCESS.value(), ECPSStatus.SUCCESS.display(), null);
+    }
+
+    /**
+     * 响应结果 成功并返回数据
+     * @param data
+     * @return
+     */
+    public static ECPSResult success(Object data){
+        return new ECPSResult(ECPSStatus.SUCCESS.value(), ECPSStatus.SUCCESS.display(), data);
+    }
+
+    /**
+     * 响应结果 失败
+     * @return
+     */
+    public static ECPSResult error(){
+        return new ECPSResult(ECPSStatus.ERROR.value(), ECPSStatus.ERROR.display(), null);
+    }
+
+    /**
+     * 响应结果只返回状态和消息
      *
-     * @param data
-     */
-    public ECPSResult(Object data) {
-        this.status = 200;
-        this.msg = "OK";
-        this.data = data;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
-
-    public static ECPSResult build(Integer status, String msg, Object data) {
-        return new ECPSResult(status, msg, data);
-    }
-
-    /**
-     * @param data
-     * @return ECPSResult
-     * @Title: ok
-     * @Description: 返回状态是200的结果  status=200 & msg ="OK"
-     */
-    public static ECPSResult ok(Object data) {
-        return new ECPSResult(data);
-    }
-
-    public static ECPSResult ok() {
-        return new ECPSResult(null);
-    }
-
-    /**
      * @param status
-     * @param msg
-     * @return ECPSResult
-     * @Title: build
-     * @Description: 只返回状态和消息的结果
+     * @return
      */
-    public static ECPSResult build(Integer status, String msg) {
-        return new ECPSResult(status, msg, null);
+    public static ECPSResult build(ECPSStatus status) {
+        return new ECPSResult(status.value(), status.display(), null);
+    }
+    /**
+     * 响应结果带返回状态和消息以及数据
+     *
+     * @param status
+     * @return
+     */
+    public static ECPSResult build(ECPSStatus status, Object data) {
+        return new ECPSResult(status.value(), status.display(), data);
+    }
+
+    //响应结果并返回数据
+    private static ECPSResult build(Integer status, String msg, Object data) {
+        return new ECPSResult(status, msg, data);
     }
 
     /**
@@ -174,5 +161,39 @@ public class ECPSResult {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ECPSResult{");
+        sb.append("status=").append(status);
+        sb.append(", msg='").append(msg).append('\'');
+        sb.append(", data=").append(data);
+        sb.append('}');
+        return sb.toString();
     }
 }
