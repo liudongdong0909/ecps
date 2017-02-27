@@ -13,6 +13,10 @@ public class PictureResult {
 
     private String url;
 
+    private String width;
+
+    private String height;
+
     private String message;
 
     public PictureResult() {
@@ -23,6 +27,14 @@ public class PictureResult {
         super();
         this.error = error;
         this.url = url;
+        this.message = message;
+    }
+
+    public PictureResult(int error, String url, String width, String height, String message) {
+        this.error = error;
+        this.url = url;
+        this.width = width;
+        this.height = height;
         this.message = message;
     }
 
@@ -42,6 +54,22 @@ public class PictureResult {
         this.url = url;
     }
 
+    public String getWidth() {
+        return width;
+    }
+
+    public void setWidth(String width) {
+        this.width = width;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -52,7 +80,13 @@ public class PictureResult {
 
     @Override
     public String toString() {
-        return "PictureResult [error=" + error + ", url=" + url + ", message=" + message + "]";
+        final StringBuffer sb = new StringBuffer("PictureResult{");
+        sb.append("error=").append(error);
+        sb.append(", url='").append(url).append('\'');
+        sb.append(", width='").append(width).append('\'');
+        sb.append(", height='").append(height).append('\'');
+        sb.append(", message='").append(message).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
-
 }

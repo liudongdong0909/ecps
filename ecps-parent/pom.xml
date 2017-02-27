@@ -75,7 +75,7 @@
     <quartz.version>2.2.2</quartz.version>
 
     <!--fastdfs 分布式文件管理版本依赖-->
-    <fastdfs-client.version>1.25.1-RELEASE</fastdfs-client.version>
+    <fastdfs-client.version>1.25</fastdfs-client.version>
 
     <!--activiti 工作流版本依赖-->
     <activiti.version>5.18.0</activiti.version>
@@ -363,14 +363,15 @@
       </dependency>
 
       <!--fastDFS client-->
-      <!-- <dependency>
+       <!--<dependency>
            <groupId>com.github.tobato</groupId>
            <artifactId>fastdfs-client</artifactId>
            <version>${fastdfs-client.version}</version>
        </dependency>-->
+
       <dependency>
-        <groupId>com.github.tobato</groupId>
-        <artifactId>fastdfs-client</artifactId>
+        <groupId>org.csource</groupId>
+        <artifactId>fastdfs-client-java</artifactId>
         <version>${fastdfs-client.version}</version>
       </dependency>
 

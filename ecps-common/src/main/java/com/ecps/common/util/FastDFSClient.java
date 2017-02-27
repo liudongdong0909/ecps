@@ -1,6 +1,9 @@
 package com.ecps.common.util;
 
 
+import org.csource.common.NameValuePair;
+import org.csource.fastdfs.*;
+
 /**
  * 封装FastDFS客户端对象
  *
@@ -10,7 +13,7 @@ package com.ecps.common.util;
  */
 public class FastDFSClient {
 
-/*    private TrackerClient trackerClient = null;
+    private TrackerClient trackerClient = null;
     private TrackerServer trackerServer = null;
     private StorageServer storageServer = null;
     private StorageClient1 storageClient = null;
@@ -26,7 +29,7 @@ public class FastDFSClient {
         storageClient = new StorageClient1(trackerServer, storageServer);
     }
 
-    *//**
+    /**
      * @Title: uploadFile
      * @Description: 文件上传方法
      * @param fileName
@@ -37,7 +40,7 @@ public class FastDFSClient {
      *            文件扩展信息
      * @throws Exception
      * @return String
-     *//*
+     */
     public String uploadFile(String fileName, String extName, NameValuePair[] metas) throws Exception {
         String result = storageClient.upload_file1(fileName, extName, metas);
         return result;
@@ -51,7 +54,7 @@ public class FastDFSClient {
         return uploadFile(fileName, extName, null);
     }
 
-    *//**
+    /**
      * @Title: uploadFile
      * @Description: 文件上传方法
      * @param fileContent
@@ -62,7 +65,7 @@ public class FastDFSClient {
      *            文件扩展信息
      * @throws Exception
      * @return String
-     *//*
+     */
     public String uploadFile(byte[] fileContent, String extName, NameValuePair[] metas) throws Exception {
         String result = storageClient.upload_file1(fileContent, extName, metas);
         return result;
@@ -74,5 +77,6 @@ public class FastDFSClient {
 
     public String uploadFile(byte[] fileContent, String extName) throws Exception {
         return uploadFile(fileContent, extName, null);
-    }*/
+    }
+
 }

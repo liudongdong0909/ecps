@@ -21,7 +21,7 @@ import java.util.List;
 public class BaseServiceImpl<T extends BaseModel> implements BaseService<T> {
 
     @Autowired
-    private Mapper<T> mapper;
+    protected Mapper<T> mapper;
 
     /**
      * 根据id查询
