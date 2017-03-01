@@ -1,5 +1,7 @@
 package com.ecps.common.bean;
 
+import com.ecps.common.enums.ECPSStatus;
+
 /**
  * 封装KEditor接受的类型
  *
@@ -23,19 +25,19 @@ public class PictureResult {
         super();
     }
 
-    public PictureResult(int error, String url, String message) {
-        super();
-        this.error = error;
+    public PictureResult(ECPSStatus status, String url) {
+        this.error = status.value();
+        this.message = status.display();
         this.url = url;
-        this.message = message;
     }
 
-    public PictureResult(int error, String url, String width, String height, String message) {
-        this.error = error;
+
+    public PictureResult(ECPSStatus status, String url, String width, String height) {
+        this.error = status.value();
+        this.message = status.display();
         this.url = url;
         this.width = width;
         this.height = height;
-        this.message = message;
     }
 
     public int getError() {

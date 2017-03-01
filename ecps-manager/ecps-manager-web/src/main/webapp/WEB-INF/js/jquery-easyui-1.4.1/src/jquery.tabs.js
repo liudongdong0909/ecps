@@ -238,8 +238,8 @@
 	}
 	
 	function bindEvents(container){
-        var state = $.data(container, 'tabs');
-        var opts = state.options;
+		var state = $.data(container, 'tabs')
+		var opts = state.options;
 		$(container).children('div.tabs-header').unbind().bind('click', function(e){
 			if ($(e.target).hasClass('tabs-scroller-left')){
 				$(container).tabs('scrollBy', -opts.scrollIncrement);
@@ -549,8 +549,8 @@
 	 * do first select action, if no tab is setted the first tab will be selected.
 	 */
 	function doFirstSelect(container){
-        var state = $.data(container, 'tabs');
-        var tabs = state.tabs;
+		var state = $.data(container, 'tabs')
+		var tabs = state.tabs;
 		for(var i=0; i<tabs.length; i++){
 			if (tabs[i].panel('options').selected){
 				selectTab(container, i);

@@ -99,9 +99,9 @@
 //				}
 //			});
 //		}
-
-setSelected(target, opts.selected);
-        setDisabled(target, opts.disabled);
+		
+		setSelected(target, opts.selected)
+		setDisabled(target, opts.disabled);
 	}
 	
 	function setSelected(target, selected){

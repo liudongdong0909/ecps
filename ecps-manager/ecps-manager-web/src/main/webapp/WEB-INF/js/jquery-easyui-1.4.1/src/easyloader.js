@@ -231,8 +231,8 @@
 					callback.call(script);
 				}
 			}
-        };
-        document.getElementsByTagName("head")[0].appendChild(script);
+		}
+		document.getElementsByTagName("head")[0].appendChild(script);
 	}
 	
 	function runJs(url, callback){

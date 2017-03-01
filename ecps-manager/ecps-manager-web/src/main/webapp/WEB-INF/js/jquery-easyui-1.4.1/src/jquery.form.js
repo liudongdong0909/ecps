@@ -24,8 +24,8 @@
 		$(target).find('.textbox-text:focus').blur();
 		
 		var frameId = 'easyui_frame_' + (new Date().getTime());
-        var frame = $('<iframe id=' + frameId + ' name=' + frameId + '></iframe>').appendTo('body');
-        frame.attr('src', window.ActiveXObject ? 'javascript:false' : 'about:blank');
+		var frame = $('<iframe id='+frameId+' name='+frameId+'></iframe>').appendTo('body')
+		frame.attr('src', window.ActiveXObject ? 'javascript:false' : 'about:blank');
 		frame.css({
 			position:'absolute',
 			top:-1000,

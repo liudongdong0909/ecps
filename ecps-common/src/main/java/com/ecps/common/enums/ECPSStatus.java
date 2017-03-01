@@ -30,7 +30,7 @@ public enum ECPSStatus {
     PIC_UPLOAD_SUCCESS(0, "上传图片成功"),
     PIC_UPLOAD_EMPTY(1, "上传图片为空"),
     PIC_UPLOAD_SUFFIX_ERROR(2, "上传图片格式不对"),
-    PIC_UPLOAD_ERROR(3, "上传图片失败"),
+    PIC_UPLOAD_ERROR(3, "上传图片失败")
 
 
     ;

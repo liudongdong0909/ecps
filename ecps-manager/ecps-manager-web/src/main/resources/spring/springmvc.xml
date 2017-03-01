@@ -14,7 +14,20 @@
     <context:component-scan base-package="com.ecps.controller"/>
 
     <!--配置注解驱动-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <!-- 解决responseBody 输出String 时中文乱码， 也可以选择在controller的requestMapping中添加  produces = MediaType.APPLICATION_JSON_UTF8_VALUE-->
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+
+    </mvc:annotation-driven>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

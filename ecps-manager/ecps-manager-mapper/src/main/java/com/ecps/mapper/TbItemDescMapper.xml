@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecps.mapper.TbItemDescMapper">
+    <resultMap id="BaseResultMap" type="com.ecps.model.TbItemDesc">
+        <!--@mbggenerated-->
+        <id column="item_id" jdbcType="BIGINT" property="itemId" />
+        <result column="created" jdbcType="TIMESTAMP" property="created" />
+        <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ecps.model.TbItemDesc">
+        <!--@mbggenerated-->
+        <result column="item_desc" jdbcType="LONGVARCHAR" property="itemDesc" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        item_id, created, updated
+    </sql>
+    <sql id="Blob_Column_List">
+        <!--@mbggenerated-->
+        item_desc
+    </sql>
+</mapper>

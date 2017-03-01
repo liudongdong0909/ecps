@@ -1,5 +1,6 @@
 package com.ecps.service;
 
+import com.ecps.common.bean.ECPSResult;
 import com.ecps.model.TbItem;
 import com.ecps.service.base.BaseService;
 
@@ -12,4 +13,7 @@ import com.ecps.service.base.BaseService;
  */
 public interface ItemService extends BaseService<TbItem> {
 
+    ECPSResult createItem(TbItem item, String desc, String itemParams);
+
+    String getItemParamHTML(Long itemId);
 }

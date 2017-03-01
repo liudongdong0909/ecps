@@ -536,8 +536,8 @@
 				name: itemEl.itemName,
 				href: itemEl.itemHref,
 				onclick: itemEl.onclick
-            };
-            var icon = t.children('div.menu-icon');
+			}
+			var icon = t.children('div.menu-icon');
 			if (icon.length){
 				var cc = [];
 				var aa = icon.attr('class').split(' ');

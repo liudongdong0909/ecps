@@ -20,12 +20,15 @@ import java.util.List;
 @Service
 public class ItemCatServiceImpl extends BaseServiceImpl<TbItemCat> implements ItemCatService {
 
+   /* @Autowired
+    private TbItemCatMapper itemCatMapper;*/
 
     @Override
     public  List<EasyUITreeNode> queryItemCatList(Long parentId) {
         TbItemCat itemCat = new TbItemCat();
         itemCat.setParentId(parentId);
-        List<TbItemCat> itemCats = mapper.selectByExample(itemCat);
+
+        List<TbItemCat> itemCats = super.mapper.select(itemCat);
 
         List<EasyUITreeNode> result = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(itemCats)) {
