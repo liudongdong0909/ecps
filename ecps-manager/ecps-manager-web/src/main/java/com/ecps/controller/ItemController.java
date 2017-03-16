@@ -2,6 +2,8 @@ package com.ecps.controller;
 
 import com.ecps.common.bean.ECPSResult;
 import com.ecps.common.bean.EasyUIResult;
+import com.ecps.common.validator.groups.Save;
+import com.ecps.common.validator.groups.Update;
 import com.ecps.model.TbItem;
 import com.ecps.service.ItemService;
 import com.github.pagehelper.PageInfo;
@@ -12,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -46,7 +49,7 @@ public class ItemController {
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
     @ResponseBody
-    public ECPSResult createItem(TbItem item, String desc, String itemParams) {
+    public ECPSResult createItem(@RequestBody @Validated({Save.class})  TbItem item, String desc, String itemParams) {
 
         try {
             if (logger.isInfoEnabled()) {
@@ -56,6 +59,22 @@ public class ItemController {
 
         } catch (Exception e) {
             logger.error("保存商品信息失败: item= {}, desc= {}, itemParams= {}", item, desc, itemParams, e);
+        }
+        return ECPSResult.error();
+    }
+
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @ResponseBody
+    public ECPSResult upadteItem(@RequestBody @Validated({Update.class})  TbItem item, String desc, String itemParams) {
+
+        try {
+            if (logger.isInfoEnabled()) {
+                logger.info("修改保存商品信息: item= {}, desc= {}, itemParams= {}", item, desc, itemParams);
+            }
+            return itemService.createItem(item, desc, itemParams);
+
+        } catch (Exception e) {
+            logger.error("修改商品信息失败: item= {}, desc= {}, itemParams= {}", item, desc, itemParams, e);
         }
         return ECPSResult.error();
     }

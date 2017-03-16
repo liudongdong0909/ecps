@@ -1,5 +1,7 @@
 package com.ecps.model;
 
+import com.ecps.common.validator.groups.Save;
+import com.ecps.common.validator.groups.Update;
 import com.ecps.model.base.BaseModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,19 +10,20 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @ApiModel(value="商品表",description="数据库表：tb_item")
 @Table(name = "tb_item")
 public class TbItem extends BaseModel {
 
     @ApiModelProperty(value="商品id，同时也是商品编号",name="id", required=true)
-    @NotEmpty
+    @NotNull(message = "商品id不能为空", groups ={Update.class})
     @Id
     @Column(name = "id")
     private Long id;
 
     @ApiModelProperty(value="商品标题",name="title", required=true)
-    @NotEmpty
+    @NotEmpty(message="商品标题不能为空", groups = {Save.class, Update.class})
     @Column(name = "title")
     private String title;
 
@@ -29,12 +32,11 @@ public class TbItem extends BaseModel {
     private String sellPoint;
 
     @ApiModelProperty(value="商品价格，单位为：分",name="price", required=true)
-    @NotEmpty
+    @NotNull(message = "商品价格不能为空", groups = {Save.class, Update.class})
     @Column(name = "price")
     private Long price;
 
     @ApiModelProperty(value="库存数量",name="num", required=true)
-    @NotEmpty
     @Column(name = "num")
     private Integer num;
 
@@ -47,12 +49,10 @@ public class TbItem extends BaseModel {
     private String image;
 
     @ApiModelProperty(value="所属类目，叶子类目",name="cid", required=true)
-    @NotEmpty
     @Column(name = "cid")
     private Long cid;
 
     @ApiModelProperty(value="商品状态，1-正常，2-下架，3-删除",name="status", required=true)
-    @NotEmpty
     @Column(name = "status")
     private Byte status;
 

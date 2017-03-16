@@ -31,8 +31,12 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <port>8081</port>
+                    <port>8080</port>
                     <path>/</path>
+                    <!-- 系统热部署配置-->
+                    <url>http://192.168.31.104:8080/manager/text</url>
+                    <username>tomcat</username>
+                    <password>tomcat</password>
                 </configuration>
             </plugin>
         </plugins>

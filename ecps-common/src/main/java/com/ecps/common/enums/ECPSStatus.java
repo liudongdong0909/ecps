@@ -13,6 +13,9 @@ public enum ECPSStatus {
     // 400 - Bad Reques
     BAD_REQUEST(400, "提交参数不匹配"),
 
+    // 400 - bad request parameter
+    BAD_REQUEST_PARAMETER(400, "参数验证失败"),
+
     // 404 - not found
     NOT_FOUND(404, "请求结果未找到"),
 
@@ -30,10 +33,7 @@ public enum ECPSStatus {
     PIC_UPLOAD_SUCCESS(0, "上传图片成功"),
     PIC_UPLOAD_EMPTY(1, "上传图片为空"),
     PIC_UPLOAD_SUFFIX_ERROR(2, "上传图片格式不对"),
-    PIC_UPLOAD_ERROR(3, "上传图片失败")
-
-
-    ;
+    PIC_UPLOAD_ERROR(3, "上传图片失败");
 
     private int value;
 

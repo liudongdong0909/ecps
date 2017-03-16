@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--配置包扫描器-->
-    <context:component-scan base-package="com.ecps.controller"/>
+    <context:component-scan base-package="com.ecps.controller,com.ecps.common.exception"/>
 
     <!--配置注解驱动-->
     <mvc:annotation-driven>
@@ -26,8 +26,10 @@
                 </property>
             </bean>
         </mvc:message-converters>
-
     </mvc:annotation-driven>
+
+    <!-- 注入校验对象, 使用提交JSON 对象时 Hiberbate validator 的参数校验-->
+    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

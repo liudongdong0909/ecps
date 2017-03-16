@@ -19,6 +19,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.ecps</groupId>
+            <artifactId>ecps-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- JPA依赖 -->
         <dependency>
             <groupId>javax.persistence</groupId>

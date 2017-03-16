@@ -15,5 +15,11 @@ import java.util.List;
  */
 public interface ItemCatService extends BaseService<TbItemCat> {
 
+    /**
+     * 获取父节点下的商品分类子节点
+     *
+     * @param parentId
+     * @return
+     */
     List<EasyUITreeNode> queryItemCatList(Long parentId);
 }

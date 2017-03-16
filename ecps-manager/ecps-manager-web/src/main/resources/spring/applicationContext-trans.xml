@@ -40,4 +40,20 @@
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.ecps.service.*.*(..))" />
     </aop:config>
 
+    <!-- 定义切面-->
+<!--
+    <bean id="dataSourceAspect" class="com.ecps.dynamicdatasource.DataSourceAspect"/>
+
+    <aop:config>
+        &lt;!&ndash; service层事务切面&ndash;&gt;
+        <aop:pointcut id="txPointcut" expression="execution(* com.ecps.service.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+
+        &lt;!&ndash; 自定义数据源切换 切面, -9999 保证该切面最先执行&ndash;&gt;
+        <aop:aspect ref="dataSourceAspect" order="-9999">
+            <aop:before method="before" pointcut-ref="txPointcut"/>
+        </aop:aspect>
+    </aop:config>
+-->
+
 </beans>

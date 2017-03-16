@@ -16,7 +16,20 @@ import java.util.List;
  */
 public interface ContentCategoryService extends BaseService<TbContentCategory> {
 
+    /**
+     * 获取父节点下的内容分类子节点
+     *
+     * @param parentId
+     * @return
+     */
     List<EasyUITreeNode> queryContentCatList(Long parentId);
 
+    /**
+     * 新增一条内容分类记录
+     *
+     * @param parentId
+     * @param name
+     * @return
+     */
     ECPSResult insertCategory(Long parentId, String name);
 }

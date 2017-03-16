@@ -80,6 +80,6 @@
 
     <!--通用mapper-->
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="tk.mybatis.mapper.common.Mapper"/>
+        <property name="basePackage" value="com.isea533.mybatis.mapper"/>
     </bean>
 </beans>
