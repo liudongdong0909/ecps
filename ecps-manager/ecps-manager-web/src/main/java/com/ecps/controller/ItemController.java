@@ -1,5 +1,6 @@
 package com.ecps.controller;
 
+import com.ecps.aop.log.ann.SysControllerLog;
 import com.ecps.common.bean.ECPSResult;
 import com.ecps.common.bean.EasyUIResult;
 import com.ecps.common.validator.groups.Save;
@@ -49,7 +50,7 @@ public class ItemController {
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
     @ResponseBody
-    public ECPSResult createItem(@RequestBody @Validated({Save.class})  TbItem item, String desc, String itemParams) {
+    public ECPSResult createItem(TbItem item, String desc, String itemParams) {
 
         try {
             if (logger.isInfoEnabled()) {
@@ -65,7 +66,7 @@ public class ItemController {
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     @ResponseBody
-    public ECPSResult upadteItem(@RequestBody @Validated({Update.class})  TbItem item, String desc, String itemParams) {
+    public ECPSResult upadteItem(TbItem item, String desc, String itemParams) {
 
         try {
             if (logger.isInfoEnabled()) {
@@ -80,24 +81,25 @@ public class ItemController {
     }
 
     @RequestMapping(value = "{itemId}", method = RequestMethod.GET)
+    @SysControllerLog(description = "根据商品id查询商品信息")
     public ResponseEntity<TbItem> queryItemById(@PathVariable Long itemId) {
         try {
-            if (logger.isInfoEnabled()) {
-                logger.info("查询商品信息: itemId= {}", itemId);
-            }
+            // if (logger.isInfoEnabled()) {
+            //     logger.info("查询商品信息: itemId= {}", itemId);
+            // }
             TbItem item = itemService.queryById(itemId);
             if (item == null) {
-                if (logger.isInfoEnabled()){
-                    logger.info("商品信息不存在: itemId= {}", itemId);
-                }
+                // if (logger.isInfoEnabled()){
+                //     logger.info("商品信息不存在: itemId= {}", itemId);
+                // }
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
-            if (logger.isInfoEnabled()){
-                logger.info("获取商品信息: item= {}", item);
-            }
+            // if (logger.isInfoEnabled()){
+            //     logger.info("获取商品信息: item= {}", item);
+            // }
             return ResponseEntity.ok(item);
         } catch (Exception e) {
-            logger.error("查询商品信息失败: itemId= {}", itemId, e);
+            // logger.error("查询商品信息失败: itemId= {}", itemId, e);
         }
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
     }

@@ -128,16 +128,17 @@
         <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
     </bean>
 
-    <!--扫描mapper文件-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!--为了防止提前初始化上面配置的sqlSessionFactory-->
+    <!--不使用通用mapper 扫描mapper文件-->
+  <!--  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        &lt;!&ndash;为了防止提前初始化上面配置的sqlSessionFactory&ndash;&gt;
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <!--扫描mapper文件-->
+        &lt;!&ndash;扫描mapper文件&ndash;&gt;
         <property name="basePackage" value="com.ecps.mapper"/>
-    </bean>
+    </bean>-->
 
-    <!--通用mapper-->
+    <!--使用通用mapper-->
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.isea533.mybatis.mapper"/>
+        <property name="basePackage" value="com.ecps.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 </beans>

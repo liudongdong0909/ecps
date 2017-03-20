@@ -1,4 +1,4 @@
-package com.ecps.common.util.spring.exetend.converter.json;
+package com.ecps.common.spring.exetend.converter.json;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonProcessingException;

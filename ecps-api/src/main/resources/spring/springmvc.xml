@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--配置包扫描器-->
-    <context:component-scan base-package="com.ecps.api.controller,com.ecps.common.util.spring.exetend.converter.json"/>
+    <context:component-scan base-package="com.ecps.api.controller,com.ecps.common.spring.exetend.converter.json"/>
 
     <!--配置注解驱动-->
     <mvc:annotation-driven>
@@ -23,7 +23,7 @@
                 <constructor-arg index="0" value="UTF-8"/>
             </bean>-->
             <!--定义json转化器， 支持jsonp跨域-->
-            <bean class="com.ecps.common.util.spring.exetend.converter.json.CallbackMappingJackson2HttpMessageConverter">
+            <bean class="com.ecps.common.spring.exetend.converter.json.CallbackMappingJackson2HttpMessageConverter">
                 <!--跨域请求中的请求参数名-->
                 <property name="callbackName" value="callback"/>
             </bean>
