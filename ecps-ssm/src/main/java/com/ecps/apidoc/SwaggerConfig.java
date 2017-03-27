@@ -30,7 +30,7 @@ public class SwaggerConfig {
         Predicate<String> pathRegex = PathSelectors.regex(sb.toString());
         //String regex = "^/interim/[a-zA-Z]+.do$|^/newsDataController/[a-zA-Z]+.do$";
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
-               *//* .groupName("test")*//*
+               *//* .groupName("env.test")*//*
                 .pathMapping("/api")
                 .select()  // 选择那些路径和api会生成document
                 .apis(RequestHandlerSelectors.any()) // 对所有api进行监控

@@ -156,7 +156,7 @@
 					<ul class="lh">   
 						<c:forEach items="${item.images}" var="pic" varStatus="status">  
 							<c:choose>
-								<c:when test="${status.index == 0 }">
+								<c:when env.test="${status.index == 0 }">
 									<li>
 										<img data-img="1" class="img-hover"  alt="${item.title}" src="${pic}" width="50" height="50" data-url="${pic}">
 									</li>

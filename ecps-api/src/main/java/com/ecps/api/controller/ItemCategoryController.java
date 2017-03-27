@@ -54,7 +54,7 @@ public class ItemCategoryController {
      *
      * @return
      */
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/env.test", method = RequestMethod.GET)
     public ResponseEntity<String> queryItemCategoryList(@RequestParam(value = "callback", required = false) String callback) {
         try {
             ItemCatResult itemCatResult = this.itemCatService.queryItemcatList();

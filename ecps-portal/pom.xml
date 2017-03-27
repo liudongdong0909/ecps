@@ -25,7 +25,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!--spring-test 整合junit4 测试-->
+        <!--spring-env.test 整合junit4 测试-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>

@@ -112,7 +112,7 @@
         <scope>test</scope>
       </dependency>
 
-      <!--spring-test 整合junit4 测试-->
+      <!--spring-env.test 整合junit4 测试-->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
@@ -405,10 +405,10 @@
 
       <!--joda-time  时间组件-->
       <dependency>
-        <groupId>joda-time</groupId>
-        <artifactId>joda-time</artifactId>
-        <version>${joda-time.version}</version>
-      </dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>${joda-time.version}</version>
+    </dependency>
 
       <!--hiberbate-validator 校验组件-->
       <dependency>
@@ -475,8 +475,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.2</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>

@@ -28,9 +28,13 @@
         <!--开发环境-->
         <profile>
             <id>dev</id>
-            <properties>
-                <package.environment>dev</package.environment>
-            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/env/dev</directory>
+                    </resource>
+                </resources>
+            </build>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -38,25 +42,63 @@
         <profile>
             <!--测试环境-->
             <id>test</id>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/env/test</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+<!--
+    <profiles>
+        &lt;!&ndash;开发环境&ndash;&gt;
+        <profile>
+            <id>dev</id>
             <properties>
-                <package.environment>test</package.environment>
+                <package.environment>env/dev</package.environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            &lt;!&ndash;测试环境&ndash;&gt;
+            <id>test</id>
+            <properties>
+                <package.environment>env/test</package.environment>
             </properties>
         </profile>
     </profiles>
+-->
 
     <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 因为maven默认读取src/main/resources下的文件-->
     <build>
         <finalName>ecps-manager-web</finalName>
 
+        <!--打包之后不包含env-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/env/**</exclude>
+                </excludes>
+            </resource>
+
+        </resources>
+
+
         <plugins>
-            <plugin>
-                <!-- maven war plugin-->
+           <!-- <plugin>
+                &lt;!&ndash; maven war plugin&ndash;&gt;
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.2</version>
-                <configuration>
-                    <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-                    <warSourceDirectory>webapp</warSourceDirectory>
+               &lt;!&ndash; <configuration>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
@@ -67,9 +109,9 @@
                             <filtering>true</filtering>
                         </resource>
                     </webResources>
-                </configuration>
+                </configuration>&ndash;&gt;
 
-            </plugin>
+            </plugin>-->
 
             <!-- 添加tomcat插件 -->
             <plugin>
