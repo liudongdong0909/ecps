@@ -14,9 +14,11 @@ import java.util.List;
  */
 public class ItemCatResult {
 
-    @JsonProperty("data")
+    @JsonProperty("data") 
     private List<ItemCatData> itemCatDatas = new ArrayList<>();
 
+    
+    
     public List<ItemCatData> getItemCatDatas() {
         return itemCatDatas;
     }
