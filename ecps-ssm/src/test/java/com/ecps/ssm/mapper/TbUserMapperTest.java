@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,14 +31,10 @@ public class TbUserMapperTest {
     @Test
     public void testInserUser(){
         TbUser user = new TbUser();
-        user.setUserName("林青霞");
-        user.setName("东方不败");
-        user.setAge(28);
-        user.setBirthday(new Date());
+        user.setUsername("林青霞");
         user.setPassword("343434");
         user.setUpdated(new Date());
         user.setCreated(new Date());
-        user.setSex(0);
 
         userMapper.insert(user);
         System.out.println(user.getId());

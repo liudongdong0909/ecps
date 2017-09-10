@@ -232,10 +232,10 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.generator</groupId>-->
+            <!--<artifactId>mybatis-generator-core</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 因为maven默认读取src/main/resources下的文件-->

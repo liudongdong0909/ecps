@@ -37,6 +37,7 @@ public class ItemController {
                                       @RequestParam(value = "rows", defaultValue = "10")Integer rows){
         TbItem item = new TbItem();
         PageInfo<TbItem> pageInfo = itemService.queryPageListByWhere(item, page, rows);
+
         return new EasyUIResult(pageInfo.getTotal(), pageInfo.getList());
     }
 
