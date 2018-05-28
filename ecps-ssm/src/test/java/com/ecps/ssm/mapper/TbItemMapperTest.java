@@ -35,8 +35,11 @@ public class TbItemMapperTest {
         Example example = new Example(TbItem.class);
         List<TbItem> list = itemMapper.selectByExample(example);
         PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+
+        System.out.println("==========");
         System.out.println(pageInfo.getTotal());
-        System.out.print(pageInfo.getList());
+        System.out.println(pageInfo.getList());
+        System.out.println("=============");
 
     }
 
